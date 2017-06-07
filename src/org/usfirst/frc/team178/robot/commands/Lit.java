@@ -9,31 +9,51 @@ import org.usfirst.frc.team178.robot.subsystems.Lights;
  *
  */
 public class Lit extends Command {
+	
+	DigitalInput zero;
+	DigitalInput one;
+	DigitalInput two
+	DigitalInput three;
+	DigitalInput four;
+		
+		
 	Lights lights;
 	public Lit() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.lights);
+		
+		zero = new DigitalInput(0);
+		one = new DigitalInput(1);
+		two = new DigitalInput(2);
+		three = new DigitalInput(3);
+		four = new DigitalInput(4);
+		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		lights = Robot.lights;
-	/*	
-		zero = DigitalInput(0);
-		one = DigitalInput(1);
-		two = DigitalInput(2);
-		three = DigitalInput(3);
-		four = DigitalInput(4);
-		*/
-	}
+		
+		
+		lights.sendMessage("random");
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		lights.sendMessage("random");
 		
+		if(zero.get())
+			lights.sendMessage(0);
+		if(one.get())
+			lights.sendMessage(1);
+		if(two.get())
+			lights.sendMessage(2);
+		if(three.get())
+			lights.sendMessage(3);
+		if(four.get())
+			lights.sendMessage(4);
 		
+	
 		
 		
 	}
